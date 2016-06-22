@@ -3,52 +3,83 @@
 @total-columns: 12;
 @gutter: 3%;
 
-.container  {
-  padding: 0 20px;
+html, body {
+  height: 100%;
 }
 
-.row  {
-  width: 100%;
-  max-width: @max-width;
-  min-width: @min-width;
-  margin: 0 auto;
-  padding: 0.5em 0;
-  .clearfix;
-}
-
-
-//creating columns
-.create-columns(@i) when (@i > 0) {
-  @column-width: (((@max-width * @i) / @total-columns) * 100) / @max-width;
-  @missing-width: (@gutter * ((@total-columns / @i) - 1)) / (@total-columns / @i);
-  @width: @column-width - @missing-width;
-
-  .col-@{i} {
-    display: block;
+body {
+  background: @background-color;
+  color: white;
+  font-family: arial;
+  
+  header {
+    height: 100px;
+    width: 100%;
+    margin: 0 auto;
     position: relative;
-    float: left;
-    width: @width;
-    margin-right: @gutter;
-
-    &:last-child  {
-      margin-right: 0;
+    include min-em(599){
+      width: 600px;
     }
   }
-
-  .create-columns(@i - 1);
 }
-.create-columns(@total-columns);
 
-//Clearfix mixin
-.clearfix() {
-  *zoom:1;
-
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
+.game {
+  height: 800px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 10px;
+  include min-em(599){
+    width: 600px;
   }
 }
+
+.flip-container {
+  perspective: 1000px;
+  height: 22%;
+  margin: 1%;
+  cursor: pointer;
+}
+
+.flip-container.flip .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 23%;
+  float: left;
+  border-radius: 12px;
+}
+
+#card {
+  transition:  0.6s
+  transform-style(preserve-3d);
+  height: 100%;
+  position: relative;
+  
+  .front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    box-shadow: #FFCCA9 0 8px 2px;
+  }
+  
+  #card.front {
+    transform: rotateY(0deg);
+    background: #FF2151;
+  }
+  
+  #card.back {
+    transform: rotateY(180deg);
+    border: 1px solid #E8E8E8;
+  }
+}
+
+
+#card.flipped {
+  transform: rotateY( 180deg );
+}
+
