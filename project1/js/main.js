@@ -7,7 +7,7 @@ cards.forEach(function(card, i) {
     rowNumber = i;
   }
 
-  $('#row' + rowNumber).append('<div class="col-3"><img src="images/Jashton.JPG" width="100" data-card="' + card + '" /></div>');
+  $('#row' + rowNumber).append('<div class="col-3"><img src="images/Jashton.JPG" width="200" data-card="' + card + '" /></div>');
 })
 
 // 1. Look up accessing data attributes with jQuery
@@ -28,5 +28,9 @@ function shuffleIndexes(indexArray) {
   return indexArray;
 }
 
+$('#board').on('click', 'img', function(e) {
+  var imageView = $(this).data('card');
+  $(this).attr('src', 'images/' + imageView);
+});
 
     
