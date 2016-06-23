@@ -1,37 +1,32 @@
-console.log('Hello, I am working');
+var cards = shuffleIndexes(['blackrose.jpg', 'golden.jpeg', 'flower.jpg', 'fvl.jpg', 'nani.jpg', 'sequins2.jpg', 'blackrose.jpg', 'golden.jpeg', 'flower.jpg', 'fvl.jpg', 'nani.jpg', 'sequins2.jpg']);
+var rowNumber = 0
 
-var cards         = ['blackrose', 'flower', 'fvl', 'golden', 'nani', 'sequins2'];
-// cards = cards/concat(cards);
-var pairs         = cards.concat(cards);
-var chosenCards   = [];
-var cardsToFlip   = [];
-var cardsFlipped  = 0;
+cards.forEach(function(card, i) {
+  if (i === 0 || i % 4 === 0) {
+    $('#board').append('<div class="row" id="row' + i + '"></div>');
+    rowNumber = i;
+  }
 
-console.log(cards, '<--- My cards');
-console.log(pairs, ' <--- My Pairs');
-console.log('Below is the result of randomArray()...');
-console.log(randomArray(pairs)) // need to qrite this function
+  $('#row' + rowNumber).append('<div class="col-3"><img src="images/Jashton.JPG" width="100" data-card="' + card + '" /></div>');
+})
 
-$('.back').each(function(i, element) {
-  $(this).attr('cards', pairs[i]);
-});
+// 1. Look up accessing data attributes with jQuery
+// 2. Create a click handler for all images  $('#board').on(click, )
+  // - Change src attribute of img tags
+  // - Flip back over if no match
 
-$('.flip-container').click(function() {
-  console.log('click working')
-});
+function shuffleIndexes(indexArray) {
+  var random = 0;
+  var temp = 0;
+  for ( var i = 1; i < indexArray.length; i++) {
+    random = Math.round(Math.random() * i);
+    temp = indexArray[i];
+    indexArray[i] = indexArray[random];
+    indexArray[random] = temp;
+  }
+
+  return indexArray;
+}
 
 
-function randomArray(pairs) { 
-  // 1. Generate a random number for every value in the `pairs` array
-  // 2. Save each random number into an array
-  // 3. Return the array you created
-
-  var randomIndexes = [];
-
-
-  pairs.forEach(function(pair, i) {
-    randomIndexes.push(Math.floor(Math.random() * (i + 1)));
-  });
-
-  return randomIndexes;
-} 
+    
