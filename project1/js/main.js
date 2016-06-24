@@ -33,7 +33,7 @@ function shuffleIndexes(indexArray) {
 
 $('#board').on('click', 'img', function(e) {
   var imageView = $(this).data('card');
-  $(this).attr('src', 'images/' + imageView);
+  $(this).attr('src', 'images/' + imageView)
   // 1. Save image name
   // 2. Add 1 to counter
   // 3. Compare values, reset counter
@@ -42,7 +42,6 @@ $('#board').on('click', 'img', function(e) {
   if (imagesClicked === 2) {
     if (imageNames[0] === imageNames[1]) {
       console.log("true Clicked twice")
-
     }else if (imageNames[0] != imageNames[1]) {
       console.log("false");
       
@@ -51,6 +50,5 @@ $('#board').on('click', 'img', function(e) {
 })
 
 
-  
 
     
