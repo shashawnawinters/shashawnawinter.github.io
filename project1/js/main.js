@@ -16,8 +16,8 @@ cards.forEach(function(card, i) {
   // - Flip back over if no match
 
 function shuffleIndexes(indexArray) {
-  var random = 0;
-  var temp = 0;
+  var random =  0;
+  var temp =    0;
   for ( var i = 1; i < indexArray.length; i++) {
     random = Math.round(Math.random() * i);
     temp = indexArray[i];
@@ -27,10 +27,30 @@ function shuffleIndexes(indexArray) {
 
   return indexArray;
 }
+ var imagesClicked = 0
+ var imageNames = []
+
 
 $('#board').on('click', 'img', function(e) {
   var imageView = $(this).data('card');
   $(this).attr('src', 'images/' + imageView);
-});
+  // 1. Save image name
+  // 2. Add 1 to counter
+  // 3. Compare values, reset counter
+  imageNames.push(imageView) 
+  imagesClicked++ 
+  if (imagesClicked === 2) {
+    if (imageNames[0] === imageNames[1]) {
+      console.log("true Clicked twice")
+
+    }else if (imageNames[0] != imageNames[1]) {
+      console.log("false");
+      
+    }
+  }
+})
+
+
+  
 
     

@@ -424,11 +424,15 @@ h3,
 h4,
 h5,
 h6 {
-  color: #505050;
+  color: #272727;
+}
+body {
+  text-align: center;
+  color: #272727;
 }
 p {
   font-size: 16px;
-  color: #272727;
+  color: #505050;
 }
 .container {
   padding: 0 20px;
