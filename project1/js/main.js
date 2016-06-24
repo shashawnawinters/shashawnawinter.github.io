@@ -46,12 +46,7 @@ $('#board').on('click', 'img', function(e) {
 
     }else if (imageNames[0] != imageNames[1]) {
       console.log("false");
-      imageNames.forEach(function(imageName, i) {
-        $('#board').on('click', function(e) {
-          $(this).html('' + $(this).attr('src', 'images/' + imagesClicked));
-        });
-      });
-        //flip current cards back over
+    //  flip current cards back over
     }
   }
 });
